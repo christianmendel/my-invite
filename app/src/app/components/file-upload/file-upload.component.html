@@ -1,0 +1,26 @@
+<div class="file_upload">
+    <div *ngIf="!image?.name">
+        <button class="file_upload_button" [ngClass]="{ disabled: disabled }" (click)="fileInput.click()" type="button">
+            <input
+                type="file"
+                (change)="onFilesSelected($event)"
+                #fileInput
+                hidden
+                [disabled]="disabled"
+                [accept]="acceptedFormats"
+                [multiple]="multiple"
+            />
+            <span class="select_files" [ngClass]="{ disabled: disabled }">
+                {{ "Selecionar Arquivo" }}
+            </span>
+
+            <span *ngIf="selectedFiles && !!selectedFiles?.length" class="selected_files">
+                {{ selectedFiles.length }} Arquivos Selecionados
+            </span>
+
+            <span *ngIf="acceptedFormats" class="select_files_accept" [ngClass]="{ disabled: disabled }"
+                ><strong>Formatos Aceitos: {{ acceptedFormats }}</strong></span
+            >
+        </button>
+    </div>
+</div>

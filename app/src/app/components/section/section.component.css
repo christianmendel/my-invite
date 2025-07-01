@@ -1,0 +1,65 @@
+section {
+    padding: 5px;
+}
+
+.background_secundary_light {
+    background: var(--secundary-light);
+}
+
+.full {
+    width: 100%;
+}
+
+.half_full {
+    width: 70%;
+}
+
+.half {
+    width: 50%;
+}
+
+section > div {
+    border-radius: 5px;
+}
+
+.header {
+    padding: 10px;
+    text-align: center;
+}
+
+.text_center {
+    text-align: center;
+}
+
+.text_start {
+    text-align: start;
+}
+
+.content {
+    padding: 10px;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title > mat-icon {
+    margin-right: 5px;
+    color: var(--secundary);
+}
+
+@media screen and (max-width: 500px) {
+    .half_full {
+        width: 80%;
+    }
+
+    .half {
+        width: 60%;
+    }
+}

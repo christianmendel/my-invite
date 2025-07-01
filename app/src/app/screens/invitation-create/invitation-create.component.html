@@ -1,0 +1,206 @@
+<app-header></app-header>
+
+<div class="container_screen">
+    <app-section [megaTitle]="'Criar Convite'" [screen]="'full'">
+        <div content>
+            <form [formGroup]="invitationForm" (ngSubmit)="onSubmit()" class="form_invite">
+                <!-- Título do Evento -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Título do Evento</mat-label>
+                    <input matInput formControlName="title" [maxlength]="100" />
+                    <mat-error *ngIf="invitationForm.get('title')?.invalid && invitationForm.get('title')?.touched">
+                        O título é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <app-file-upload
+                    *ngIf="isPro"
+                    [multiple]="false"
+                    [(value)]="files"
+                    (valueChange)="onChageFile()"
+                ></app-file-upload>
+
+                <!-- Descrição do Evento -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Descrição do Evento</mat-label>
+                    <textarea matInput formControlName="description" rows="3"></textarea>
+                </mat-form-field>
+
+                <!-- Tipo de Evento -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo de Evento</mat-label>
+                    <mat-select formControlName="eventType" (selectionChange)="onEventTypeChange()">
+                        <mat-option [value]="eventTypeEnum.ANNIVERSARY">🎂 Aniversário</mat-option>
+                        <mat-option [value]="eventTypeEnum.WEDDING">💍 Casamento</mat-option>
+                        <mat-option [value]="eventTypeEnum.MEETING">🏢 Reunião de Negócios</mat-option>
+                        <mat-option [value]="eventTypeEnum.PARTY">🎉 Festa</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="invitationForm.get('eventType')?.invalid">
+                        Selecione um tipo de evento.
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Data do Evento -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Escolha uma data</mat-label>
+                    <input
+                        matInput
+                        [matDatepicker]="picker"
+                        formControlName="eventDate"
+                        [matDatepickerFilter]="validDateFilter"
+                    />
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="invitationForm.get('eventDate')?.invalid"> Insira uma data válida. </mat-error>
+                </mat-form-field>
+
+                <!-- Hora do Evento -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Horário do Evento</mat-label>
+                    <input matInput formControlName="eventTime" type="time" />
+                    <mat-error *ngIf="invitationForm.get('eventTime')?.invalid"> Escolha um horário válido. </mat-error>
+                </mat-form-field>
+
+                <mat-checkbox formControlName="isTimerVisible">Mostrar Temporizador</mat-checkbox>
+
+                <!-- Endereço do Evento -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Endereço do Evento</mat-label>
+                    <div formGroupName="location">
+                        <input matInput formControlName="address" placeholder="Digite o endereço" />
+                    </div>
+                    <mat-error *ngIf="invitationForm.get('location.address')?.invalid">
+                        O endereço é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Sugestões de Presentes -->
+                <ng-container *ngIf="isGiftVisible">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sugestões de Presentes</mat-label>
+                        <mat-chip-grid #chipGrid aria-label="Sugestões de presentes">
+                            <mat-chip-row
+                                *ngFor="let gift of giftSuggestions.controls; let i = index"
+                                (removed)="removeGift(i)"
+                            >
+                                {{ gift.value }}
+                                <button matChipRemove [attr.aria-label]="'Remover ' + gift.value">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip-row>
+                        </mat-chip-grid>
+                        <input
+                            name="currentGift"
+                            placeholder="Adicione um presente..."
+                            #giftInput
+                            [formControl]="giftInputControl"
+                            [matChipInputFor]="chipGrid"
+                            (matChipInputTokenEnd)="addGift($event)"
+                        />
+                    </mat-form-field>
+                </ng-container>
+
+                <!-- WhatsApp para Confirmação -->
+                <mat-form-field appearance="outline">
+                    <mat-label>WhatsApp para Confirmação</mat-label>
+                    <input
+                        matInput
+                        formControlName="whatsAppNumber"
+                        type="tel"
+                        placeholder="Ex: 5551998765432"
+                        maxlength="18"
+                        (input)="onWhatsAppInput($event)"
+                        [mask]="'(00) 00 00000-0000'"
+                        [dropSpecialCharacters]="true"
+                    />
+                    <mat-error *ngIf="invitationForm.get('whatsAppNumber')?.invalid">
+                        Insira um número válido.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-checkbox formControlName="confirmByWhatsApp">Mostrar Botão WhatsApp</mat-checkbox>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Seu email (Para receber o link do convite)</mat-label>
+                    <input matInput formControlName="email" [maxlength]="100" />
+                    <mat-error *ngIf="invitationForm.get('email')?.invalid && invitationForm.get('email')?.touched">
+                        O Email é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <table cellspacing="0">
+                    <tr class="container_tr">
+                        <td>
+                            <div class="input_color">
+                                <label for="inviteBorderColor">Cor da Borda</label>
+                                <div>
+                                    <input type="color" formControlName="inviteBorderColor" id="inviteBorderColor" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input_color">
+                                <label for="inviteFontColor">Cor da Fonte</label>
+                                <div>
+                                    <input type="color" formControlName="inviteFontColor" id="inviteFontColor" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input_color">
+                                <label for="inviteBackground">Cor de Fundo</label>
+                                <div>
+                                    <input type="color" formControlName="inviteBackground" id="inviteBackground" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table cellspacing="0">
+                    <tr class="container_tr">
+                        <td>
+                            <div class="input_color">
+                                <label for="envelopeBackground">Cor do Envelope</label>
+                                <div>
+                                    <input type="color" formControlName="envelopeBackground" id="envelopeBackground" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input_color">
+                                <label for="envelopeBackgroundLeft">Cor do Envelope Esquerda</label>
+                                <div>
+                                    <input type="color" formControlName="envelopeBackgroundLeft" id="inviteBackground" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input_color">
+                                <label for="envelopeInternalAndTopBackground">Cor Envelope (Fechamento e Interior)</label>
+                                <div>
+                                    <input type="color" formControlName="envelopeInternalAndTopBackground" id="inviteFontColor" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <button mat-flat-button color="primary" type="submit">Criar Convite</button>
+            </form>
+        </div>
+    </app-section>
+
+    <app-section [title]="'Pré-visualização do Convite'" [screen]="'full'">
+        <div content>
+            <app-invitation
+                [invitationForm]="invitationForm"
+                [isGiftVisible]="isGiftVisible"
+                [imageUrl]="imageUrl"
+                [isPreView]="true"
+            ></app-invitation></div
+    ></app-section>
+</div>
+
+<app-footer></app-footer>

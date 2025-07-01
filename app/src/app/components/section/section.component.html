@@ -1,0 +1,20 @@
+<section
+    [class.background_secundary_light]="backgroundSecundaryLight"
+    [class.full]="screen === 'full'"
+    [class.half_full]="screen === 'half_full'"
+    [class.half]="screen === 'half'"
+>
+    <div>
+        <div class="header" [class.text_center]="alignText === 'center'" [class.text_start]="alignText === 'start'">
+            <h1 *ngIf="megaTitle" class="primary_color">{{ megaTitle }}</h1>
+            <h2 *ngIf="title" class="title primary_color">
+                <mat-icon *ngIf="iconTitle">{{ iconTitle }}</mat-icon> {{ title }}
+            </h2>
+            <p *ngIf="subTitle" class="primary_color">{{ subTitle }}</p>
+            <ng-content select="[header]"></ng-content>
+        </div>
+        <div class="content">
+            <ng-content select="[content]"></ng-content>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,49 @@
+.hero {
+    padding: 20px;
+    text-align: center;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+}
+
+.features-cards,
+.works-cards,
+.pricing-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.pricing-card,
+.works-card,
+.feature-card {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: transparent;
+}
+
+.works-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card > mat-card-header,
+.works-card > mat-card-header,
+.feature-card > mat-card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.pricing-card > mat-card-actions {
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

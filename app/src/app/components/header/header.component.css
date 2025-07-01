@@ -1,0 +1,67 @@
+@import "material-icons/iconfont/material-icons.css";
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ebeef5;
+    background: var(--white);
+    padding: 10px;
+}
+
+header > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hambu_button,
+.logo_button {
+    background: transparent;
+    border: transparent;
+}
+
+.logo_button {
+    border-radius: 2px;
+    font-size: 24px;
+    color: var(--primary) !important;
+}
+
+.logo_ul,
+.menu_list {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu_list {
+    justify-content: end;
+}
+
+.logo_ul > li,
+.menu_list > li {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+    list-style: none;
+}
+
+.menu_list_mobi {
+    display: none;
+}
+
+.menu_list > li > button,
+.logo_ul > li > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secundary);
+}

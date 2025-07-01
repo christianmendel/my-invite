@@ -1,0 +1,50 @@
+{
+  "name": "myinvite",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "dev": "ng serve --configuration=development",
+    "start": "ng serve --configuration=production",
+    "build": "ng build --configuration=production",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix"
+  },
+  "engines": {
+    "node": "<=22"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "18.2.10",
+    "@angular/cdk": "18.2.10",
+    "@angular/common": "18.2.10",
+    "@angular/compiler": "18.2.10",
+    "@angular/core": "18.2.10",
+    "@angular/forms": "18.2.10",
+    "@angular/localize": "18.2.10",
+    "@angular/material": "18.2.10",
+    "@angular/platform-browser": "18.2.10",
+    "@angular/platform-browser-dynamic": "18.2.10",
+    "@angular/router": "18.2.10",
+    "@ngxs/store": "18.0.0",
+    "material-icons": "1.13.7",
+    "ngx-mask": "18.0.0",
+    "rxjs": "7.8.0",
+    "tslib": "2.3.0",
+    "zone.js": "0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "18.2.11",
+    "@angular/cli": "18.2.11",
+    "@angular/compiler-cli": "18.2.10",
+    "@types/jasmine": "4.3.0",
+    "@types/leaflet": "1.9.14",
+    "jasmine-core": "4.6.0",
+    "karma": "6.4.0",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.0",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.0.0",
+    "typescript": "5.4.5"
+  }
+}

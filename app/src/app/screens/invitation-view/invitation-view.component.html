@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<div class="container_screen flex_column_center_center">
+    <app-section [screen]="'full'">
+        <div content>
+            <app-invitation
+                [invitationForm]="invitationForm"
+                [isGiftVisible]="isGiftVisible"
+                [imageUrl]="image.url"
+            ></app-invitation>
+        </div>
+    </app-section>
+</div>
+
+<app-footer></app-footer>

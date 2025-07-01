@@ -1,0 +1,165 @@
+<app-header></app-header>
+
+<div class="container_screen">
+    <app-section [screen]="'full'">
+        <div content>
+            <app-section [megaTitle]="'Crie e compartilhe convites com facilidade'" class="hero">
+                <div content>
+                    <div class="hero-content">
+                        <p class="hero-text">
+                            Crie convites online e envie para seus convidados. Confirmação de presença via WhatsApp com
+                            um clique.
+                        </p>
+                        <a href="#pricing"> <button mat-raised-button color="primary">Comece Agora</button></a>
+                    </div>
+                </div>
+            </app-section>
+
+            <app-section [megaTitle]="'Crie convites para qualquer ocasião'" id="features" class="features">
+                <div content>
+                    <div class="features-cards">
+                        <mat-card class="feature-card">
+                            <mat-card-header>
+                                <mat-card-title>🎂 Aniversário</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Template personalizavel.</li>
+                                    <li>Opção de adicionar temporizador.</li>
+                                    <li>Possibilidade de adicionar opções para presentes.</li>
+                                    <li>Adição de imagem.</li>
+                                    <li>Confirmação de presença via WhatsApp com um clique.</li>
+                                </ul>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card class="feature-card">
+                            <mat-card-header>
+                                <mat-card-title>💍 Casamento</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Design personalizavel.</li>
+                                    <li>Opção de adicionar temporizador.</li>
+                                    <li>Incluir mapa interativo para o local do evento.</li>
+                                    <li>Possibilidade de adicionar opções para presentes ou lista de casamento.</li>
+                                    <li>Adição de imagem.</li>
+                                    <li>Confirmação de presença de forma prática via WhatsApp.</li>
+                                </ul>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card class="feature-card">
+                            <mat-card-header>
+                                <mat-card-title>🏢 Reunião de Negócios</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Design minimalista e profissional para eventos corporativos.</li>
+                                    <li>
+                                        Detalhes do evento como horário, local e link para videoconferência (se
+                                        aplicável).
+                                    </li>
+                                    <li>Adição de imagem.</li>
+                                    <li>Confirmação de presença de forma prática via WhatsApp.</li>
+                                </ul>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card class="feature-card">
+                            <mat-card-header>
+                                <mat-card-title>🎉 Festa</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Template personalizavel.</li>
+                                    <li>Opção de adicionar temporizador.</li>
+                                    <li>Possibilidade de adicionar opções para presentes.</li>
+                                    <li>Adição de imagem.</li>
+                                    <li>Confirmação de presença rápida via WhatsApp.</li>
+                                </ul>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </app-section>
+
+            <app-section [megaTitle]="'Como isso funciona?'" id="works" class="works">
+                <div content>
+                    <div class="works-cards">
+                        <mat-card class="works-card">
+                            <mat-card-header>
+                                <mat-card-title>📝 Criação</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content><p>Customize seu convite</p></mat-card-content>
+                        </mat-card>
+                        <mat-card class="works-card">
+                            <mat-card-header>
+                                <mat-card-title>💳 Pagamento</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content><p>Faça o pagamento via Mercado Pago</p></mat-card-content>
+                        </mat-card>
+                        <mat-card class="works-card">
+                            <mat-card-header>
+                                <mat-card-title>📧 Email</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content><p>Você receberá um email com o link do convite</p></mat-card-content>
+                        </mat-card>
+                        <mat-card class="works-card">
+                            <mat-card-header>
+                                <mat-card-title>🔗 Compartilhe</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content><p>Envie o link para seus convidados</p></mat-card-content>
+                        </mat-card>
+                        <mat-card class="works-card">
+                            <mat-card-header>
+                                <mat-card-title>✅ Confirmação</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content><p>Convidados irão confirmar via WhatsApp</p></mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </app-section>
+
+            <app-section [megaTitle]="'Escolha seu plano'" id="pricing" class="pricing">
+                <div content>
+                    <div class="pricing-cards">
+                        <mat-card class="pricing-card">
+                            <mat-card-header>
+                                <mat-card-title>Start</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Opção de adicionar temporizador.</li>
+                                    <li>Confirmação de presença via WhatsApp.</li>
+                                </ul>
+                                <strong><p>R$ 9,90</p></strong>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-raised-button color="primary" (click)="goCreateInvite()">
+                                    Comece Agora
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                        <mat-card class="pricing-card">
+                            <mat-card-header>
+                                <mat-card-title>Pro</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Tudo do start.</li>
+                                    <li>Adição de imagem.</li>
+                                </ul>
+                                <strong><p>R$ 14,90</p></strong>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-raised-button color="primary" (click)="goCreateInvite(true)">
+                                    Escolher Plano
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+            </app-section>
+        </div>
+    </app-section>
+</div>
+
+<app-footer></app-footer>

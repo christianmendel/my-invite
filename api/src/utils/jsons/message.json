@@ -1,0 +1,13 @@
+{
+    "ERRO_INTERNO_SERVIDOR": "Erro interno do servidor",
+    "JA_EXISTE_ALGUTEM_COM_ESSE_EMAIL": "Já existe alguém com esse email",
+    "EMAIL_FORMATO_INVALIDO": "Email com formato inválido",
+    "USUARIO_NAO_ENCONTRADO": "Usuário não encotrado",
+    "SEM_ACESSO": "Sem acesso",
+    "EMAIL_RECUPERACAO_SENHA_ENVIADO": "Email de recuperação de senha enviado",
+    "SENHA_ANTIGA_INCORRETA": "Senha antiga incorreta",
+    "USUARIO_SENHA_INCORRETA": "Usuário ou senha incorreta",
+    "CONVITE_NAO_ENCOTRADO": "Convite não encontrado",
+    "NAO_POSSIVEL_VISUALIZAR_CONVITE": "Não é possível visualizar esse convite",
+    "SEM_ARQUIVO": "Sem arquivo"
+}

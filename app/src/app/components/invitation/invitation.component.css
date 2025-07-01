@@ -1,0 +1,213 @@
+.invitation_container {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    height: 200px;
+    width: 300px;
+    background: #658ced;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+
+.lid {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: transform 0.25s linear;
+}
+
+.lid.one {
+    border-top: 100px solid #658ced;
+    transform: rotateX(0deg);
+    z-index: 3;
+    transition-delay: 0.75s;
+}
+
+.lid.two {
+    border-top: 100px solid #658ced;
+    transform: rotateX(90deg);
+    z-index: 1;
+    transition-delay: 0.5s;
+}
+
+.envelope {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top: 100px solid transparent;
+    border-right: 150px solid #c4dff0;
+    border-bottom: 100px solid #c4dff0;
+    border-left: 150px solid #a4d4f2;
+    z-index: 3;
+}
+
+.letter {
+    position: absolute;
+    top: 0;
+    width: 80%;
+    height: 80%;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    z-index: 2;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+}
+
+.letter button {
+    margin-top: 20px;
+    color: #3b4049;
+}
+
+.wrapper:hover .lid.one {
+    transform: rotateX(90deg);
+    transition-delay: 0s;
+}
+
+.wrapper:hover .lid.two {
+    transform: rotateX(180deg);
+    transition-delay: 0.25s;
+}
+
+.wrapper:hover .letter {
+    transform: translateY(-50px);
+    transition-delay: 0.5s;
+}
+
+.invitation_img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.invitation_preview {
+    backdrop-filter: blur(10px);
+    border: 1px solid transparent;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+.invitation_info {
+    font-size: 1rem;
+    padding: 12px;
+}
+
+.invitation_info_multi {
+    display: flex;
+    justify-content: space-between;
+}
+
+.whatsapp-button {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border: none;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-button {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+.whatsapp-button:hover {
+    background: linear-gradient(135deg, #1ebe5d, #0d6b56);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.countdown {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 25px auto;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-value {
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-label {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 500px) {
+    .invitation_preview {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .countdown-timer {
+        align-items: center;
+    }
+
+    .countdown-item {
+        width: 20%;
+        margin-bottom: 10px;
+    }
+
+    .countdown-value {
+        font-size: 1.5em;
+    }
+
+    .countdown-label {
+        font-size: 0.5em;
+    }
+}

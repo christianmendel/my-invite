@@ -1,0 +1,25 @@
+<header>
+    <div>
+        <ul class="logo_ul">
+            <li>
+                <button routerLink="/" class="logo_button">
+                    <strong>GoInvity</strong>
+                </button>
+            </li>
+        </ul>
+
+        <ul class="menu_list menu_list_desk">
+            <ng-template [ngTemplateOutlet]="templateMenuList"></ng-template>
+        </ul>
+    </div>
+</header>
+
+<ng-template #templateMenuList>
+    <li>
+        <button mat-button routerLink="/">Início</button>
+    </li>
+
+    <li>
+        <a href="#pricing"> <button mat-button>Preços</button></a>
+    </li>
+</ng-template>

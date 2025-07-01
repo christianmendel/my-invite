@@ -1,0 +1,105 @@
+<div class="invitation_container">
+    <div
+        class="wrapper"
+        *ngIf="!isOpen"
+        [ngStyle]="{
+       backgroundColor: invitationForm.get('envelopeInternalAndTopBackground')?.value,
+    }"
+    >
+        <div
+            class="lid one"
+            [ngStyle]="{
+            borderTopColor: invitationForm.get('envelopeInternalAndTopBackground')?.value,
+         }"
+        ></div>
+        <div
+            class="lid two"
+            [ngStyle]="{
+            borderTopColor: invitationForm.get('envelopeInternalAndTopBackground')?.value,
+        }"
+        ></div>
+        <div
+            class="envelope"
+            [ngStyle]="{
+                borderRightColor: invitationForm.get('envelopeBackground')?.value,
+                borderBottomColor: invitationForm.get('envelopeBackground')?.value,
+                borderLeftColor: invitationForm.get('envelopeBackgroundLeft')?.value
+            }"
+        ></div>
+
+        <div class="letter">
+            <button mat-raised-button (click)="toggleOpen()">Ver Convite</button>
+        </div>
+    </div>
+
+    <div
+        class="invitation_preview"
+        [ngStyle]="{
+            borderColor: invitationForm.get('inviteBorderColor')?.value,
+            color: invitationForm.get('inviteFontColor')?.value,
+            background: invitationForm.get('inviteBackground')?.value
+        }"
+        *ngIf="isOpen"
+    >
+        <h2 class="text_align_center">{{ invitationForm.get("title")?.value | emptyValue }}</h2>
+
+        <div *ngIf="imageUrl?.length" class="flex_center_center">
+            <img class="invitation_img" [src]="imageUrl" alt="" />
+        </div>
+        <div class="invitation_info text_align_center">
+            <strong>{{ invitationForm.get("description")?.value | emptyValue }}</strong>
+        </div>
+        <div class="invitation_info">
+            <strong>Tipo de Evento:</strong>
+            {{ eventTypeDescription(invitationForm.get("eventType")?.value) | emptyValue }}
+        </div>
+        <div class="invitation_info_multi">
+            <div class="invitation_info">
+                <strong>Data:</strong> {{ invitationForm.get("eventDate")?.value | date : "dd/MM/yyyy" | emptyValue }}
+            </div>
+            <div class="invitation_info">
+                <strong>Hora:</strong> {{ invitationForm.get("eventTime")?.value | emptyValue }}
+            </div>
+        </div>
+        <div class="invitation_info">
+            <strong>Endereço:</strong> {{ invitationForm.get("location.address")?.value | emptyValue }}
+        </div>
+        <div class="invitation_info" *ngIf="!!giftSuggestions?.length">
+            <strong>Presentes Sugeridos:</strong>
+            <ul>
+                <li *ngFor="let gift of giftSuggestions.controls">{{ gift.value }}</li>
+            </ul>
+        </div>
+
+        <div *ngIf="!!invitationForm.get('isTimerVisible')?.value" class="countdown">
+            <h2 class="text_align_center">Faltam:</h2>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <span class="countdown-value">{{ remainingTime.days }}</span>
+                    <span class="countdown-label">dias</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value">{{ remainingTime.hours }}</span>
+                    <span class="countdown-label">horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value">{{ remainingTime.minutes }}</span>
+                    <span class="countdown-label">minutos</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value">{{ remainingTime.seconds }}</span>
+                    <span class="countdown-label">segundos</span>
+                </div>
+            </div>
+        </div>
+
+        <a
+            *ngIf="!!invitationForm.get('confirmByWhatsApp')?.value"
+            class="whatsapp-button"
+            [href]="'https://wa.me/' + invitationForm.get('whatsAppNumber')?.value + '?text=' + encodeUrl()"
+            target="_blank"
+        >
+            Confirmar Presença
+        </a>
+    </div>
+</div>

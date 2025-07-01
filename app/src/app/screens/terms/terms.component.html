@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<app-section [megaTitle]="'Termos de Uso'" >
+    <div content>
+        <mat-card class="custom-card">
+            <mat-card-content>                
+                <div *ngFor="let termo of termos" class="termo-container">
+                    <h2 class="termo-title">{{ termo.chave }}</h2>
+                    <p class="termo-content">{{ termo.conteudo || "" }}</p>
+                </div>
+                <p class="termo-content">Última atualização: 07 de setembro de 2024</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</app-section>
+
+<app-footer></app-footer>

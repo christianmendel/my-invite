@@ -1,0 +1,35 @@
+@import "material-icons/iconfont/material-icons.css";
+
+.file_upload {
+    margin: 10px;
+}
+
+.file_upload_button {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dashed var(--primary);
+    border-radius: 5px;
+    background: none;
+}
+
+.select_files,
+.selected_files,
+.select_files_accept {
+    border: 1px dotted var(--primary);
+    color: var(--primary);
+    padding: 10px;
+}
+
+.disabled {
+    border: 1px dotted var(--disabled);
+    color: var(--disabled);
+    cursor: not-allowed;
+}
+
+.selected_files,
+.select_files_accept {
+    border: 0;
+}
